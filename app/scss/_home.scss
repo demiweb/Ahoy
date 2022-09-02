@@ -188,6 +188,7 @@ main {
       margin-bottom: 0;
       margin-top: 5vw;
       a {
+
         img {
           width: 7.2222vw;
           height: 7.2222vw;
@@ -574,7 +575,7 @@ main {
           input {
             display: none;
 
-            &:checked ~ p {
+            &:checked ~ span {
               &::after {
                 opacity: 1;
               }

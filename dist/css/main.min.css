@@ -1069,7 +1069,7 @@ main > section {
           display: flex; }
           .form form > p .checkbox-cont label input {
             display: none; }
-            .form form > p .checkbox-cont label input:checked ~ p::after {
+            .form form > p .checkbox-cont label input:checked ~ span::after {
               opacity: 1; }
           .form form > p .checkbox-cont label span {
             width: 100%;
