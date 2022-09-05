@@ -1499,7 +1499,8 @@ main {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding-bottom: 57.5000vw;
+    //padding-bottom: 57.5000vw;
+    padding-bottom: 37.5000vw;
   }
   .our-clients__text {
     width: 100%;
@@ -1540,34 +1541,44 @@ main {
   }
   .our-clients__slides-cont {
     width: 100%;
-    height: 122.5000vw;
+    //height: 122.5000vw;
+    height: 102.5000vw;
   }
   .slider-scroll {
     position: absolute;
     bottom: 20px;
     left: 0;
-    height: calc(100vw - 52px);
+    height: 10px;
+    width: calc(100vw - 52px);
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 28px;
+    padding-right: 28px;
 
-    transform-origin: 0 100%;
-    transform: rotate(90deg);
-    //.line {
-    //  width: 100%;
-    //  height: 1px;
-    //  left: 0;
-    //  top: 50%;
-    //  transform: translate(0, -50%);
-    //  &::before {
-    //    left: -5px;
-    //    top: 50%;
-    //    transform: translate(0, -50%) rotate(-90deg);
-    //  }
-    //  &::after {
-    //    right: -5px;
-    //    left: auto;
-    //    top: 50%;
-    //    transform: translate(0, -50%) rotate(90deg);
-    //  }
-    //}
+    //transform-origin: 0 100%;
+    //transform: rotate(90deg);
+    .line {
+      width: 100%;
+      height: 1px;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      &::before {
+        left: -5px;
+        top: 50%;
+        transform: translate(0, -50%) rotate(-90deg);
+      }
+      &::after {
+        right: -5px;
+        left: auto;
+        top: 50%;
+        transform: translate(0, -50%) rotate(90deg);
+      }
+    }
+    .bar-cont {
+      width: 100%;
+      height: 100%;
+    }
   }
   .our-clients__slide {
     .img {
@@ -1611,7 +1622,7 @@ main {
     }
   }
   .our-clients__slide.swiper-slide-active + .our-clients__slide {
-    transform: translate(0, -109%);
+    transform:none;
   }
   .our-clients__slide.swiper-slide-active + .our-clients__slide + .our-clients__slide {
     transform: none;
@@ -1969,10 +1980,38 @@ main {
   }
   .footer {
     transition: opacity 0.4s ease;
-
+    opacity: 0;
+    &.scroll {
+      opacity: 1;
+    }
     &.hide {
-      opacity: 0;
+      opacity: 0 !important;
     }
   }
+  .play-btn {
+    transition: opacity 0.3s ease;
+    &.pause {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+.counting-delay {
+  & > * {
+    opacity: 0;
+    transform: translate(0, 140%);
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    &:first-child {
+      transition-delay: 1.5s;
+    }
+    &:nth-child(2) {
+      transition-delay: 1.6s;
+    }
+    &.done {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
 }
 

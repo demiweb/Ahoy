@@ -21,8 +21,10 @@ var counterContainer = [...document.querySelectorAll('.counting-delay')];
 function addCoutingDelay() {
     if (counterContainer.length) {
         counterContainer.forEach((cont) => {
-            var anims = [...cont.querySelectorAll('.anim')];
+            var anims = [...cont.children];
+            console.log(anims);
             anims.forEach((btn, k) => {
+                btn.classList.add('anim');
                 btn.dataset.animDelay = k * 100;
             })
         })
@@ -189,7 +191,7 @@ function clientsSlider() {
 
                 slidesPerView: 1,
                 speed: 600,
-                direction: "vertical",
+                direction: "horizontal",
                 spaceBetween: 0,
                 scrollbar: {
                     el: sldScrl,
@@ -198,6 +200,7 @@ function clientsSlider() {
                 },
                 breakpoints: {
                     767: {
+                        forceToAxis: false,
                         direction: 'vertical',
                     }
                 }
@@ -328,6 +331,11 @@ var isInViewport = function (elem) {
 let scrollItem = document.querySelector('.contacts-footer');
 function ifHaveScrollItem() {
     if (scrollItem) {
+        $(window).scroll(function (e) {
+            $el = $('.footer');
+            $el.toggleClass('scroll', $(this).scrollTop() > 32);
+
+        });
         window.addEventListener('scroll', function (event) {
             if (isInViewport(scrollItem)) {
                 document.querySelector('.footer').classList.add('hide');
@@ -339,6 +347,9 @@ function ifHaveScrollItem() {
     }
 }
 ifHaveScrollItem();
+
+
+
 
 
 
