@@ -79,7 +79,10 @@ scrollAnimations();
 
 
 function progressBarScroll(btn, numb, perc) {
-    document.querySelector(`.progress--${numb} .line p`).style.width = perc + "%";
+    if (document.querySelector(`.progress`)) {
+        document.querySelector(`.progress--${numb} .line p`).style.width = perc + "%";
+    }
+
 }
 
 let pageSections = [...document.querySelectorAll('.page-section')];
