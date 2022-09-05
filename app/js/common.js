@@ -158,10 +158,13 @@ function getFullHeightOfPage() {
 }
 getFullHeightOfPage();
 function progressBarScrollFull() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
-        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
-        scrolled = (winScroll / height) * 100;
-    document.querySelector(".full-progress p").style.width = scrolled + "%";
+    if (document.querySelector(".full-progress p")) {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+            height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+            scrolled = (winScroll / height) * 100;
+        document.querySelector(".full-progress p").style.width = scrolled + "%";
+    }
+
 }
 window.onscroll = function () {
     getSectionScrolled();
