@@ -756,7 +756,8 @@ main {
     color: #fc3;
     margin-left: 0.3125vw;
 
-    margin-bottom: 4.2975vw;
+    //margin-bottom: 4.2975vw;
+    margin-bottom: 0.5975vw;
   }
 
   ul {
@@ -774,8 +775,9 @@ main {
       color: #fc3;
       margin-bottom: 1.3021vw;
       transition: font-weight 0.3s ease;
+      cursor: pointer;
 
-      &.active {
+      &.active, &:hover {
         font-weight: bold;
       }
 
@@ -934,17 +936,98 @@ main {
   display: flex;
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  overflow: hidden;
+  //overflow: vixi;
   position: absolute;
   top: 4.4271vw;
   right: 0;
   width: 65.0521vw;
-  height: 40.5208vw;
+  //height: 40.5208vw;
+  height: 35.45208vw;
 
   img, video, iframe {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+.services__img-sliders {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .btns {
+
+  }
+  .navi {
+    border: 1px solid #FFCC33;
+    width: 660px;
+    left: 252px;
+    top: calc(100% + 33px);
+    position: absolute;
+    height: 8px;
+    &.swiper-scrollbar-lock {
+      display: flex !important;
+      .swiper-scrollbar-drag {
+        width: 100% !important;
+      }
+    }
+  }
+  .swiper-scrollbar-drag {
+    height: 100%;
+    background: #FFCC33;
+    border-radius: 0 !important;
+  }
+  .btn-sld {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    position: absolute;
+    top: calc(100% + 17px);
+    left: 195px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    &.btn-sld--next {
+      top: calc(100% + 17px);
+
+      right: 282px;
+      transform: rotate(180deg);
+      left: auto;
+    }
+  }
+}
+.services__img-single {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+.services__img-cont {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  .swiper-wrapper {
+    height: 100%;
+  }
+  .swiper-slide {
+    height: 100%;
+    width: 100%;
+
+    img, video, iframe {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 

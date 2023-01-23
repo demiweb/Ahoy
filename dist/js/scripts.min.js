@@ -246,30 +246,81 @@ function clientsSlider() {
 
 clientsSlider();
 
+
+
+//new 23.01
+let servicesSliders = [...document.querySelectorAll('.services__img-single')];
+
+function startServicesSliders() {
+    if (!servicesSliders.length) {
+
+    } else {
+        servicesSliders.forEach((sld) => {
+            let sldCont = sld.querySelector('.services__img-cont');
+            let sldScrl = sld.querySelector('.navi');
+            let sldPrev = sld.querySelector('.btn-sld--prev');
+            let sldNext = sld.querySelector('.btn-sld--next');
+
+            const swiper2 = new Swiper(sldCont, {
+                // Optional parameters
+                loop: false,
+
+                slidesPerView: 1,
+                speed: 600,
+                direction: "horizontal",
+                spaceBetween: 0,
+                freeMode: false,
+                mousewheel: true,
+                navigation: {
+                    nextEl: sldNext,
+                    prevEl: sldPrev,
+                },
+                scrollbar: {
+                    el: sldScrl,
+                    hide: false,
+                    draggable: true,
+                },
+
+
+            });
+        })
+    }
+}
+
+startServicesSliders();
+
+
+
+//new 23.01
+
 //sliders
 
 // change text class li
 
 let liText = [...document.querySelectorAll('.service__text ul li')];
+let liSliders = [...document.querySelectorAll('.services__img-single')];
+
 
 function changeActiveLi() {
     if (liText.length) {
-        let activeI = 0;
-        let length = liText.length - 1;
 
-        setInterval(() => {
-            if (document.querySelector('.service__text ul li.active')) {
-                document.querySelector('.service__text ul li.active').classList.remove('active');
+        liText.forEach((btn, k) => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('active')) {
 
-                liText[activeI].classList.add('active');
-            } else {
-                liText[activeI].classList.add('active');
-            }
-            activeI += 1;
-            if (activeI > length) {
-                activeI = 0;
-            }
-        }, 1100)
+                } else {
+                    liText.forEach((btn2) => {
+                        btn2.classList.remove('active');
+                    });
+                    liSliders.forEach((btn3) => {
+                        btn3.classList.remove('active');
+                    });
+                    liSliders[k].classList.add('active');
+                    btn.classList.add('active');
+                }
+            });
+
+        });
     }
 }
 
