@@ -149,6 +149,7 @@ function goToSectionProg() {
         })
     }
 }
+
 goToSectionProg();
 
 let bgGlobal = document.querySelector('.background-global');
@@ -157,9 +158,17 @@ function getFullHeightOfPage() {
     if (bgGlobal) {
         let fullHeight = document.body.offsetHeight;
         bgGlobal.style.height = fullHeight + 'px';
+        if (window.innerWidth < 767) {
+            setTimeout(() => {
+                let fullHeight = document.body.offsetHeight;
+                bgGlobal.style.height = fullHeight + 'px';
+            }, 500)
+        }
     }
 }
+
 getFullHeightOfPage();
+
 function progressBarScrollFull() {
     if (document.querySelector(".full-progress p")) {
         let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
@@ -169,6 +178,7 @@ function progressBarScrollFull() {
     }
 
 }
+
 window.onscroll = function () {
     getSectionScrolled();
     navHighlighter();
@@ -190,6 +200,8 @@ function clientsSlider() {
         clientsSlides.forEach((sld) => {
             let sldCont = sld.querySelector('.our-clients__slides-cont');
             let sldScrl = sld.querySelector('.bar-cont');
+            let sldPrev = sld.querySelector('.btn-back');
+            let sldNext = sld.querySelector('.btn-next');
 
             const swiper2 = new Swiper(sldCont, {
                 // Optional parameters
@@ -199,6 +211,12 @@ function clientsSlider() {
                 speed: 600,
                 direction: "horizontal",
                 spaceBetween: 0,
+                freeMode: false,
+                mousewheel: true,
+                navigation: {
+                    nextEl: sldNext,
+                    prevEl: sldPrev,
+                },
                 scrollbar: {
                     el: sldScrl,
                     hide: false,
@@ -206,6 +224,11 @@ function clientsSlider() {
                 },
                 breakpoints: {
                     767: {
+                        slidesPerView: 1,
+
+                        // freeMode: true,
+                        // mousewheel: true,
+
                         forceToAxis: false,
                         direction: 'vertical',
                     }
@@ -243,7 +266,7 @@ function changeActiveLi() {
                 liText[activeI].classList.add('active');
             }
             activeI += 1;
-            if(activeI > length) {
+            if (activeI > length) {
                 activeI = 0;
             }
         }, 1100)
@@ -273,8 +296,7 @@ function checkWhatVideoType() {
                     document.querySelector('.video-box').classList.add('hide-poster');
                 }
             });
-        }
-        else {
+        } else {
             var tag = document.createElement("script");
             tag.src = "//www.youtube.com/player_api";
             var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -310,7 +332,6 @@ function checkWhatVideoType() {
                 });
 
 
-
             }
 
             onYouTubePlayerAPIReady();
@@ -323,18 +344,22 @@ checkWhatVideoType();
 // Inject YouTube API script
 
 
-
-
 var isInViewport = function (elem) {
     var bounding = elem.getBoundingClientRect();
     return (
         bounding.top >= 0 &&
         bounding.left >= 0 &&
-        bounding.bottom - 40 <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.bottom - 160 <= (window.innerHeight || document.documentElement.clientHeight) &&
         bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 };
+$(window).scroll(function (e) {
+    $el = $('.header');
+    $el.toggleClass('header-fixed', $(this).scrollTop() > 32);
+
+});
 let scrollItem = document.querySelector('.contacts-footer');
+
 function ifHaveScrollItem() {
     if (scrollItem) {
         $(window).scroll(function (e) {
@@ -352,7 +377,26 @@ function ifHaveScrollItem() {
         }, false);
     }
 }
+
 ifHaveScrollItem();
+
+let footHiden = [...document.querySelectorAll('.footer-hidden > a')];
+
+function scrollToWhat() {
+    if (footHiden.length) {
+        footHiden.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $(".contact-us__soc").offset().top - 100
+                }, 500);
+            })
+        })
+    }
+}
+
+scrollToWhat();
 
 
 
