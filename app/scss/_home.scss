@@ -179,7 +179,7 @@ main {
     color: #fff;
 
     br {
-      display: none;
+      //display: none;
     }
 
   }
@@ -187,6 +187,7 @@ main {
 }
 
 @media screen and (max-width: 767px) {
+
   .video-box .poster {
     border-radius: 20px;
     overflow: hidden;
@@ -297,7 +298,7 @@ main {
     position: relative;
     z-index: 2;
     height: 100%;
-    padding-top: 3.9583vw;
+    padding-top: 7.3583vw;
     padding-bottom: 3.9583vw;
   }
 }
@@ -721,8 +722,8 @@ main {
   position: relative;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .services__cont {
@@ -747,6 +748,7 @@ main {
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
+  pointer-events: none;
 
   p {
     font-weight: 300;
@@ -758,6 +760,7 @@ main {
 
     //margin-bottom: 4.2975vw;
     margin-bottom: 0.5975vw;
+    pointer-events: auto;
   }
 
   ul {
@@ -776,6 +779,7 @@ main {
       margin-bottom: 1.3021vw;
       transition: font-weight 0.3s ease;
       cursor: pointer;
+      pointer-events: auto;
 
       &.active, &:hover {
         font-weight: bold;
@@ -788,9 +792,9 @@ main {
 .video-box {
   box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  width: 77.6042vw;
-  height: 41.5625vw;
-  overflow: hidden;
+  width: 83.1042vw;
+  height: 37.7625vw;
+  //overflow: hidden;
   position: relative;
 
   &.hide-poster {
@@ -940,7 +944,7 @@ main {
   position: absolute;
   top: 4.4271vw;
   right: 0;
-  width: 65.0521vw;
+  width: 63.0521vw;
   //height: 40.5208vw;
   height: 35.45208vw;
 
@@ -959,43 +963,68 @@ main {
   .btns {
 
   }
-  .navi {
-    border: 1px solid #FFCC33;
-    width: 660px;
-    left: 252px;
-    top: calc(100% + 33px);
-    position: absolute;
-    height: 8px;
-    &.swiper-scrollbar-lock {
-      display: flex !important;
-      .swiper-scrollbar-drag {
-        width: 100% !important;
-      }
-    }
-  }
-  .swiper-scrollbar-drag {
-    height: 100%;
-    background: #FFCC33;
-    border-radius: 0 !important;
-  }
-  .btn-sld {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    position: absolute;
-    top: calc(100% + 17px);
-    left: 195px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-    &.btn-sld--next {
-      top: calc(100% + 17px);
 
-      right: 282px;
-      transform: rotate(180deg);
-      left: auto;
+
+
+}
+
+.navi {
+  border: 1px solid #FFCC33;
+  width: 32.375vw;
+  left: 13.1250vw;
+  top: calc(100% + 1.7188vw);
+  position: absolute;
+  height: 0.4167vw;
+  &.swiper-scrollbar-lock {
+    display: flex !important;
+    .swiper-scrollbar-drag {
+      width: 100% !important;
     }
+  }
+}
+.swiper-scrollbar-drag {
+  height: 100%;
+  background: #FFCC33;
+  border-radius: 0 !important;
+}
+.btn-sld {
+  cursor: pointer;
+  width: 2.0833vw;
+  height: 2.0833vw;
+  display: flex;
+  position: absolute;
+  top: calc(100% + 0.8854vw);
+  left: 10.1563vw;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  &.btn-sld--next {
+    top: calc(100% + 0.8854vw);
+
+    right: 14.6875vw;
+    transform: rotate(180deg);
+    left: auto;
+  }
+}
+.video-gallery {
+  .btn-sld {
+    right: -4.0625vw !important;
+    left: auto;
+    top: 2px;
+    transform: rotate(90deg);
+    &.btn-sld--next {
+      top: auto;
+      bottom: -0.3646vw;
+      transform: rotate(-90deg);
+    }
+  }
+  .navi {
+    width: 0.4167vw;
+    height: 32.2396vw;
+    right: -3.2813vw;
+    top: 2.9688vw;
+    left: auto;
   }
 }
 .services__img-single {
@@ -1027,7 +1056,31 @@ main {
     img, video, iframe {
       width: 100%;
       height: 100%;
+      border-radius: 20px;
     }
+  }
+}
+
+.video-gallery__cont {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.video-gallery {
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+.video-gallery__slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  img, video, iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -1533,6 +1586,50 @@ main {
 }
 
 @media screen and (max-width: 767px) {
+
+  .services__img {
+    z-index: 2;
+  }
+
+  .btns {
+    .btn-sld {
+      width: 11.1111vw;
+      height: 11.1111vw;
+      top: calc(100% + 4.7222vw);
+      left: 0px;
+      &.btn-sld--next {
+        top: calc(100% + 4.7222vw);
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+  .navi {
+    height: 2.2222vw;
+    width: 55.5556vw;
+    left: 15.0000vw;
+    top: calc(100% + 8.8889vw);
+  }
+  .video-gallery .navi {
+    width: 55.5556vw;
+    height: 2.2222vw;
+    top: calc(100% + 7.5000vw);
+    left: 15.0000vw;
+    right: auto;
+  }
+  .video-gallery .btn-sld {
+    top: calc(100% + 3.3333vw);
+    left: 0;
+    transform: rotate(0);
+
+    &.btn-sld--next {
+      top: calc(100% + 3.3333vw);
+      right: 0 !important;
+      transform: rotate(180deg);
+    }
+  }
+
+
   .hero-bg.done .drone img {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
@@ -1578,14 +1675,14 @@ main {
     }
 
     h1 {
-      font-size: 12.5000vw;
-      line-height: 13.8889vw;
+      font-size: 10.5000vw;
+      line-height: 12.8889vw;
       text-align: center;
       width: 100%;
 
       strong {
-        font-size: 13.6111vw;
-        line-height: 13.8889vw;
+        font-size: 11.9111vw;
+        line-height: 12.8889vw;
       }
     }
 
@@ -1794,7 +1891,7 @@ main {
     position: relative;
   }
   .service__text {
-    padding-top: 13.7778vw;
+    padding-top: 11.7778vw;
     padding-bottom: 19.4444vw;
     width: 100%;
     max-width: none;
@@ -1804,14 +1901,14 @@ main {
 
     p {
       width: 100%;
-      font-size: 3.3333vw;
+      font-size: 6.3333vw;
       line-height: 4.1667vw;
       text-align: center;
     }
 
     ul {
       width: 100%;
-      padding-top: 76.5556vw;
+      padding-top: 75.5556vw;
 
       li {
         font-size: 9.7222vw;
@@ -1826,13 +1923,13 @@ main {
   }
   .services__img {
     width: 100%;
-    height: 73.3333vw;
+    height: 50.2333vw;
     top: 20.2778vw;
     right: 0;
   }
 
   .videos-block .container {
-    padding-top: 25.8333vw;
+    padding-top: 15.8333vw;
     padding-bottom: 25.0000vw;
   }
   .video-box {
@@ -2179,5 +2276,4 @@ main {
       transform: translate(0, 0);
     }
   }
-
 }
